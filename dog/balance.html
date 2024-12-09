@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Tasks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="material/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        #balance-container {
+            margin: 20px;
+            font-size: 18px;
+        }
+
+        .task-container {
+            margin: 10px auto;
+            max-width: 600px;
+        }
+
+        .task {
+            margin: 10px auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #000000;
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            width: 80%;
+        }
+
+        .task:hover {
+            transform: translateY(-5px);
+        }
+
+        .task-detail {
+            display: flex;
+            align-items: center;
+        }
+
+        .task-image img {
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        .task h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #f2f2f2;
+        }
+
+        .task-data {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .task-data img {
+            margin-right: 5px;
+        }
+
+        .task-data h5 {
+            margin: 0;
+            color: #ffcc00;
+            font-size: 18px;
+        }
+
+        .task-button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .task-button:hover {
+            background-color: #ff6b6b;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #000;
+        }
+
+        .popup-content input {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup-content button {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup-content button:hover {
+            background-color: #ff4040;
+        }
+
+        @media (max-width: 600px) {
+            .task-container {
+                max-width: 100%;
+            }
+
+            .task-button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .task h4 {
+                font-size: 16px;
+            }
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            border-top: 2px solid #444;
+        }
+
+        .nav-item {
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .nav-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .nav-item:hover {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div id="balance-container">
+        <h2><b>💸</b></h2><br>
+        <span id="balance">0</span> 💾 your total Save
+    </div>
+
+    <h2><b>Coming soon!!</b></h2>
+    <br>
+    <a href="detail.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>DETAILS</span>
+    </a>
+    <br>
+
+    <div class="task-container">
+        <div class="task">
+            <div class="task-detail">
+                <div class="task-image">
+                    <img src="material/images/ton.png" width="45px" alt="">
+                </div>
+                <div>
+                    <h4>Link your wallet</h4>
+                    <div class="task-data">
+                        <img src="material/images/logo.png" width="20px" alt="Coin Icon">
+                        <h5>💳</h5>
+                    </div>
+                </div>
+            </div>
+            <button id="connect-button" class="task-button" onclick="openWalletPopup()">CONNECT</button>
+        </div>
+        <br> <br>
+        <img src="material/images/logo.png" width="50%">
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>HOME</span>
+        </a>
+        <a href="invite-friends.html" class="nav-item">
+            <i class="fas fa-user-friends"></i>
+            <span>PARTGRAM</span>
+        </a>
+        <a href="task.html" class="nav-item">
+            <i class="fas fa-tasks"></i>
+            <span>TASKS</span>
+        </a>
+        <a href="balance.html" class="nav-item">
+            <i class="fas fa-wallet"></i>
+            <span>BALANCE</span>
+        </a>
+    </nav>
+
+    <!-- Popup for Wallet Address -->
+    <div id="wallet-popup" class="popup">
+        <div class="popup-content">
+            <h3>Enter your Wallet Address</h3>
+            <input type="text" id="wallet-address" placeholder="Enter Wallet Address">
+            <button onclick="connectWallet()">Connect Wallet</button>
+        </div>
+    </div>
+
+    <script>
+        function openWalletPopup() {
+            // Show the wallet connection popup
+            document.getElementById('wallet-popup').style.display = 'flex';
+        }
+
+        function connectWallet() {
+            var walletAddress = document.getElementById('wallet-address').value;
+            if (walletAddress) {
+                // Store the wallet address in localStorage
+                localStorage.setItem('walletConnected', 'true');
+                localStorage.setItem('walletAddress', walletAddress);
+
+                // Change button to "CONNECTED" and disable it
+                document.getElementById('connect-button').textContent = "CONNECTED";
+                document.getElementById('connect-button').disabled = true;
+
+                // Close the popup
+                document.getElementById('wallet-popup').style.display = 'none';
+
+                // Update balance after wallet connection
+                updateBalance(walletAddress);
+            } else {
+                alert("Please enter a valid wallet address.");
+            }
+        }
+
+        function updateBalance(walletAddress) {
+            fetch('get_balance.php?address=' + walletAddress)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        document.getElementById('balance').textContent = data.balance;
+                    }
+                })
+                .catch(error => console.error('Error fetching balance:', error));
+        }
+
+        window.onload = function() {
+            // Check if the wallet is already connected
+            if (localStorage.getItem('walletConnected') === 'true') {
+                document.getElementById('connect-button').textContent = "CONNECTED";
+                document.getElementById('connect-button').disabled = true;
+
+                // Update balance on page load
+                var walletAddress = localStorage.getItem('walletAddress');
+                updateBalance(walletAddress);
+            }
+        }
+    </script>
+</body>
+</html>

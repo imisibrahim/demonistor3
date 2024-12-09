@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; 
+        }
+        
+        
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('material/images/loading.gif') no-repeat center center fixed; 
+            background-size: cover; 
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .loading-container h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        
+    <script>
+       
+        setTimeout(function() {
+            window.location.href = 'home.html'; 
+        }, 5000);
+    </script>
+</body>
+</html>
