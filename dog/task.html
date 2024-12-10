@@ -270,3 +270,16 @@
     <script src="material/js/main.js"></script>
 </body>
 </html>
+<script>
+    let lastScrollY = window.scrollY;
+    const nav = document.querySelector('.bottom-nav');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+            nav.style.transform = 'translateY(100%)'; // Hide nav
+        } else {
+            nav.style.transform = 'translateY(0)'; // Show nav
+        }
+        lastScrollY = window.scrollY;
+    });
+</script>
